@@ -1,0 +1,25 @@
+Maximum per-device batch size probe — GPT-2 Large (774,030,080 params), BLOCK_SIZE=512,
+single H100 (80 GB), image maorb23/nebius-trainer:qwen36-qlora-cu126-sky-v2.
+Each probe = 12 short steps; "OK" = reached step ~10 with no torch.OutOfMemoryError.
+
+Pass 1 — power-of-2 sweep (brackets the limit):
+  1   OK    logs/probe_bs1.txt
+  2   OK    logs/probe_bs2.txt
+  4   OK    logs/probe_bs4.txt
+  8   OK    logs/probe_bs8.txt
+  16  OK    logs/probe_bs16.txt
+  32  OOM   logs/probe_bs32.txt
+
+Pass 2 — fine search in (16, 32] (pins the true maximum):
+  28  OK    logs/probe_bs28.txt
+  30  OK    logs/probe_bs30.txt
+  31  OOM   logs/probe_bs31.txt
+  32  OOM   logs/probe_bs32.txt
+
+Maximum that runs: 30  (boundary 30 OK / 31 OOM, adjacent).
+OOM at 31: "CUDA out of memory. Tried to allocate 2.97 GiB. GPU 0 ... 1.23 GiB free."
+
+Chosen for all training runs: 28.
+Reason — safety margin. At 30 only ~1.2 GB is free; once CUDA allocator fragmentation
+and the same-size eval batch are added, 30 risks an OOM mid-run. 28 leaves comfortable
+headroom and still saturates the GPU. Used identically on the 1-GPU and 4-GPU runs.

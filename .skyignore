@@ -1,0 +1,8 @@
+kubectl
+logs/
+graphs/
+config/
+ASSIGNMENT.md
+report.md
+mk8s-ng-config.json
+make_report_data.py

@@ -1,0 +1,218 @@
+YAML to run: train_job_ddp.yaml
+Submitting job to cluster: ddp-probe
+[0m⚙︎ Uploading files to API server
+[0m[32m✓ Files uploaded[0m[0m  [2mView logs: ~/sky_logs/file_uploads/sky-2026-07-23-17-52-55-011028-4bb56b48.log[0m
+[0m⚙︎ Syncing files.
+  [2mSyncing workdir (to 1 node): /root/.sky/api_server/clients/7e2406be/file_mounts/blobs/693ba7065fc32f67c7f9b1043728aa674addbd7d9c277cc9adc544f37c4a1f42/mnt/c/Users/kali-linux/Projects/home_assignment_ddp -> ~/sky_workdir[0m
+[0m[32m✓ Synced workdir.[0m[0m  [2mView logs: sky api logs -l sky-2026-07-23-14-52-55-092126/workdir_sync.log[0m
+[0m⚙︎ Job submitted, ID: 2
+[2m├── [0m[2mWaiting for task resources on 1 node.[0m
+[2m└── [0mJob started. Streaming logs... [2m(Ctrl-C to exit log streaming; job will not be killed)[0m
+[36m(nebius-ddp-training, pid=2459)[0m ++ echo 10.5.22.125
+[36m(nebius-ddp-training, pid=2459)[0m ++ head -n 1
+[36m(nebius-ddp-training, pid=2459)[0m + MASTER_ADDR=10.5.22.125
+[36m(nebius-ddp-training, pid=2459)[0m + MASTER_PORT=29500
+[36m(nebius-ddp-training, pid=2459)[0m + echo SKYPILOT_NODE_RANK=0
+[36m(nebius-ddp-training, pid=2459)[0m SKYPILOT_NODE_RANK=0
+[36m(nebius-ddp-training, pid=2459)[0m + echo SKYPILOT_NUM_NODES=1
+[36m(nebius-ddp-training, pid=2459)[0m SKYPILOT_NUM_NODES=1
+[36m(nebius-ddp-training, pid=2459)[0m + echo SKYPILOT_NUM_GPUS_PER_NODE=1
+[36m(nebius-ddp-training, pid=2459)[0m SKYPILOT_NUM_GPUS_PER_NODE=1
+[36m(nebius-ddp-training, pid=2459)[0m + echo SKYPILOT_NODE_IPS:
+[36m(nebius-ddp-training, pid=2459)[0m SKYPILOT_NODE_IPS:
+[36m(nebius-ddp-training, pid=2459)[0m + echo 10.5.22.125
+[36m(nebius-ddp-training, pid=2459)[0m 10.5.22.125
+[36m(nebius-ddp-training, pid=2459)[0m + echo MASTER_ADDR=10.5.22.125
+[36m(nebius-ddp-training, pid=2459)[0m MASTER_ADDR=10.5.22.125
+[36m(nebius-ddp-training, pid=2459)[0m ++ pwd
+[36m(nebius-ddp-training, pid=2459)[0m + echo PWD=/root/sky_workdir
+[36m(nebius-ddp-training, pid=2459)[0m PWD=/root/sky_workdir
+[36m(nebius-ddp-training, pid=2459)[0m + test -f train.py
+[36m(nebius-ddp-training, pid=2459)[0m + torchrun --nproc_per_node=1 --nnodes=1 --node_rank=0 --master_addr=10.5.22.125 --master_port=29500 train.py
+[36m(nebius-ddp-training, pid=2459)[0m [NCCL] Distributed training initialised
+[36m(nebius-ddp-training, pid=2459)[0m [NCCL] World size: 1
+[36m(nebius-ddp-training, pid=2459)[0m [NCCL] Backend: nccl
+[36m(nebius-ddp-training, pid=2459)[0m [NCCL] Master addr: 10.5.22.125
+[36m(nebius-ddp-training, pid=2459)[0m [NCCL] Master port: 29500
+[36m(nebius-ddp-training, pid=2459)[0m [Rank 0] Loading tokenizer: gpt2
+[36m(nebius-ddp-training, pid=2459)[0m Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[36m(nebius-ddp-training, pid=2459)[0m [WARNING  | huggingface_hub.utils._http]: Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[36m(nebius-ddp-training, pid=2459)[0m [Comm] Trainable parameters: 774,030,080
+[36m(nebius-ddp-training, pid=2459)[0m [Comm] Theoretical grad payload / step (fp32): 3,096,120,320 bytes
+[36m(nebius-ddp-training, pid=2459)[0m [Comm] Theoretical ring all-reduce bytes/GPU/step: 0 bytes
+[36m(nebius-ddp-training, pid=2459)[0m [transformers] warmup_ratio is deprecated and will be removed in v5.2. Use `warmup_steps` instead.
+[36m(nebius-ddp-training, pid=2459)[0m [36m(nebius-ddp-training, pid=2459)[0m   0%|          | 0/12 [00:00<?, ?it/s][transformers] `loss_type=None` was set in the config but it is unrecognized. Using the default loss: `ForCausalLMLoss`.
+[36m(nebius-ddp-training, pid=2459)[0m [36m(nebius-ddp-training, pid=2459)[0m   8%|▊         | 1/12 [00:00<00:06,  1.59it/s][36m(nebius-ddp-training, pid=2459)[0m  25%|██▌       | 3/12 [00:00<00:01,  4.67it/s][36m(nebius-ddp-training, pid=2459)[0m  42%|████▏     | 5/12 [00:00<00:01,  6.96it/s][36m(nebius-ddp-training, pid=2459)[0m  58%|█████▊    | 7/12 [00:01<00:00,  8.64it/s] 75%|███████▌  | 9/12 [00:01<00:00,  9.91it/s][Comm] step=10 avg_step_time_s=0.0752 cumulative_comm_time_s=0.0000 cumulative_comm_bytes=0
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:49469 [0] NCCL INFO cudaDriverVersion 13000
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:49469 [0] NCCL INFO NCCL version 2.25.1+cuda12.8
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO NET/Plugin: Failed to find ncclNetPlugin_v9 symbol.
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO NET/Plugin: Loaded net plugin NCCL RDMA Plugin v8 (v8)
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v9 symbol.
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO NET/Plugin: Loaded collnet plugin SHARP (v8)
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO Plugin Path : /opt/hpcx/nccl_rdma_sharp_plugin/lib/libnccl-net.so
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO P2P plugin v8 IBext_v8
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO NET/IB : No device found.
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO NET/IB : No device found.
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO NET/IB : Using [RO]; OOB eth0:10.5.22.125<0>
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO NET/Socket : Using [0]eth0:10.5.22.125<0>
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO Using network Socket
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO ncclCommInitRankConfig comm 0x3ec4b750 rank 0 nranks 1 cudaDev 0 nvmlDev 0 busId 8d000 commId 0xbaaa48881512832f - Init START
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO RAS client listening socket at ::1<28028>
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO NET/Socket : GPU Direct RDMA Disabled for HCA 0 'eth0'
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO Setting affinity for GPU 0 to ffff
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO comm 0x3ec4b750 rank 0 nRanks 1 nNodes 1 localRanks 1 localRank 0 MNNVL 0
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO Channel 00/64 : 0
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO Channel 01/64 : 0
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO Channel 02/64 : 0
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO Channel 03/64 : 0
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO Channel 04/64 : 0
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO Channel 05/64 : 0
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO Channel 06/64 : 0
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO Channel 07/64 : 0
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO Channel 08/64 : 0
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO Channel 09/64 : 0
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO Channel 10/64 : 0
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO Channel 11/64 : 0
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO Channel 12/64 : 0
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO Channel 13/64 : 0
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO Channel 14/64 : 0
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO Channel 15/64 : 0
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO Channel 16/64 : 0
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO Channel 17/64 : 0
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO Channel 18/64 : 0
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO Channel 19/64 : 0
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO Channel 20/64 : 0
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO Channel 21/64 : 0
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO Channel 22/64 : 0
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO Channel 23/64 : 0
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO Channel 24/64 : 0
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO Channel 25/64 : 0
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO Channel 26/64 : 0
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO Channel 27/64 : 0
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO Channel 28/64 : 0
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO Channel 29/64 : 0
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO Channel 30/64 : 0
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO Channel 31/64 : 0
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO Channel 32/64 : 0
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO Channel 33/64 : 0
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO Channel 34/64 : 0
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO Channel 35/64 : 0
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO Channel 36/64 : 0
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO Channel 37/64 : 0
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO Channel 38/64 : 0
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO Channel 39/64 : 0
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO Channel 40/64 : 0
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO Channel 41/64 : 0
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO Channel 42/64 : 0
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO Channel 43/64 : 0
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO Channel 44/64 : 0
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO Channel 45/64 : 0
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO Channel 46/64 : 0
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO Channel 47/64 : 0
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO Channel 48/64 : 0
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO Channel 49/64 : 0
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO Channel 50/64 : 0
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO Channel 51/64 : 0
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO Channel 52/64 : 0
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO Channel 53/64 : 0
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO Channel 54/64 : 0
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO Channel 55/64 : 0
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO Channel 56/64 : 0
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO Channel 57/64 : 0
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO Channel 58/64 : 0
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO Channel 59/64 : 0
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO Channel 60/64 : 0
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO Channel 61/64 : 0
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO Channel 62/64 : 0
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO Channel 63/64 : 0
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO Trees [0] -1/-1/-1->0->-1 [1] -1/-1/-1->0->-1 [2] -1/-1/-1->0->-1 [3] -1/-1/-1->0->-1 [4] -1/-1/-1->0->-1 [5] -1/-1/-1->0->-1 [6] -1/-1/-1->0->-1 [7] -1/-1/-1->0->-1 [8] -1/-1/-1->0->-1 [9] -1/-1/-1->0->-1 [10] -1/-1/-1->0->-1 [11] -1/-1/-1->0->-1 [12] -1/-1/-1->0->-1 [13] -1/-1/-1->0->-1 [14] -1/-1/-1->0->-1 [15] -1/-1/-1->0->-1 [16] -1/-1/-1->0->-1 [17] -1/-1/-1->0->-1 [18] -1/-1/-1->0->-1 [19] -1/-1/-1->0->-1 [20] -1/-1/-1->0->-1 [21] -1/-1/-1->0->-1 [22] -1/-1/-1->0->-1 [23] -1/-1/-1->0->-1 [24] -1/-1/-1->0->-1 [25] -1/-1/-1->0->-1 [26] -1/-1/-1->0->-1 [27] -1/-1/-1->0->-1 [28] -1/-1/-1->0->-1 [29] -1/-1/-1->0->-1 [30] -1/-1/-1->0->-1 [31] -1/-1/-1->0->-1 [32] -1/-1/-1->0->-1 [33] -1/-1/-1->0->-1 [34] -1/-1/-1->0->-1 [35] -1/-1/-1->0->-1 [36] -1/-1/-1->0->-1 [37] -1/-1/-1->0->-1 [38] -1/-1/-1->0->-1 [39] -1/-1/-1->0->-1 [40] -1/-1/-1->0->-1 [41] -1/-1/-1->0->-1 [42] -1/-1/-1->0->-1 [43] -1/-1/-1->0->-1 [44] -1/-1/-1->0->-1 [45] -1/-1/-1->0->-1 [46] -1/-1/
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO P2P Chunksize set to 524288
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO Check P2P Type intraNodeP2pSupport 0 directMode 0
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53156 [0] NCCL INFO [Proxy Service] Device 0 CPU core 10
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53157 [0] NCCL INFO [Proxy Service UDS] Device 0 CPU core 14
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO 64 coll channels, 64 collnet channels, 0 nvls channels, 64 p2p channels, 64 p2p channels per peer
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO CC Off, workFifoBytes 1048576
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO ncclCommInitRankConfig comm 0x3ec4b750 rank 0 nranks 1 cudaDev 0 nvmlDev 0 busId 8d000 commId 0xbaaa48881512832f - Init COMPLETE
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:53151 [0] NCCL INFO Init timings - ncclCommInitRankConfig: rank 0 nranks 1 total 0.28 (kernels 0.25, alloc 0.00, bootstrap 0.00, allgathers 0.00, topo 0.01, graphs 0.00, connections 0.01, rest 0.00)
+[36m(nebius-ddp-training, pid=2459)[0m                                               {'loss': '10.73', 'grad_norm': '8.044', 'learning_rate': '3.451e-07', 'epoch': '0.004237'}
+[36m(nebius-ddp-training, pid=2459)[0m [36m(nebius-ddp-training, pid=2459)[0m  83%|████████▎ | 10/12 [00:01<00:00,  9.91it/s][36m(nebius-ddp-training, pid=2459)[0m  92%|█████████▏| 11/12 [00:01<00:00,  7.06it/s]
+[36m(nebius-ddp-training, pid=2459)[0m [36m(nebius-ddp-training, pid=2459)[0m   0%|          | 0/250 [00:00<?, ?it/s][A
+[36m(nebius-ddp-training, pid=2459)[0m [36m(nebius-ddp-training, pid=2459)[0m   3%|▎         | 7/250 [00:00<00:03, 67.26it/s][A
+[36m(nebius-ddp-training, pid=2459)[0m [36m(nebius-ddp-training, pid=2459)[0m   6%|▌         | 14/250 [00:00<00:03, 60.39it/s][A
+[36m(nebius-ddp-training, pid=2459)[0m [36m(nebius-ddp-training, pid=2459)[0m   8%|▊         | 21/250 [00:00<00:03, 58.50it/s][A
+[36m(nebius-ddp-training, pid=2459)[0m [36m(nebius-ddp-training, pid=2459)[0m  11%|█         | 27/250 [00:00<00:03, 57.70it/s][A
+[36m(nebius-ddp-training, pid=2459)[0m [36m(nebius-ddp-training, pid=2459)[0m  13%|█▎        | 33/250 [00:00<00:03, 56.76it/s][A
+[36m(nebius-ddp-training, pid=2459)[0m [36m(nebius-ddp-training, pid=2459)[0m  16%|█▌        | 39/250 [00:00<00:03, 56.56it/s][A
+[36m(nebius-ddp-training, pid=2459)[0m [36m(nebius-ddp-training, pid=2459)[0m  18%|█▊        | 45/250 [00:00<00:03, 56.73it/s][A
+[36m(nebius-ddp-training, pid=2459)[0m [36m(nebius-ddp-training, pid=2459)[0m  20%|██        | 51/250 [00:00<00:03, 56.39it/s][A
+[36m(nebius-ddp-training, pid=2459)[0m [36m(nebius-ddp-training, pid=2459)[0m  23%|██▎       | 57/250 [00:00<00:03, 56.17it/s][A
+[36m(nebius-ddp-training, pid=2459)[0m [36m(nebius-ddp-training, pid=2459)[0m  25%|██▌       | 63/250 [00:01<00:03, 56.36it/s][A
+[36m(nebius-ddp-training, pid=2459)[0m [36m(nebius-ddp-training, pid=2459)[0m  28%|██▊       | 69/250 [00:01<00:03, 56.16it/s][A
+[36m(nebius-ddp-training, pid=2459)[0m [36m(nebius-ddp-training, pid=2459)[0m  30%|███       | 75/250 [00:01<00:03, 56.17it/s][A
+[36m(nebius-ddp-training, pid=2459)[0m [36m(nebius-ddp-training, pid=2459)[0m  32%|███▏      | 81/250 [00:01<00:03, 55.91it/s][A
+[36m(nebius-ddp-training, pid=2459)[0m [36m(nebius-ddp-training, pid=2459)[0m  35%|███▍      | 87/250 [00:01<00:02, 56.09it/s][A
+[36m(nebius-ddp-training, pid=2459)[0m [36m(nebius-ddp-training, pid=2459)[0m  37%|███▋      | 93/250 [00:01<00:02, 55.81it/s][A
+[36m(nebius-ddp-training, pid=2459)[0m [36m(nebius-ddp-training, pid=2459)[0m  40%|███▉      | 99/250 [00:01<00:02, 55.95it/s][A
+[36m(nebius-ddp-training, pid=2459)[0m [36m(nebius-ddp-training, pid=2459)[0m  42%|████▏     | 105/250 [00:01<00:02, 55.81it/s][A
+[36m(nebius-ddp-training, pid=2459)[0m [36m(nebius-ddp-training, pid=2459)[0m  44%|████▍     | 111/250 [00:01<00:02, 55.99it/s][A
+[36m(nebius-ddp-training, pid=2459)[0m [36m(nebius-ddp-training, pid=2459)[0m  47%|████▋     | 117/250 [00:02<00:02, 56.06it/s][A
+[36m(nebius-ddp-training, pid=2459)[0m [36m(nebius-ddp-training, pid=2459)[0m  49%|████▉     | 123/250 [00:02<00:02, 55.81it/s][A
+[36m(nebius-ddp-training, pid=2459)[0m [36m(nebius-ddp-training, pid=2459)[0m  52%|█████▏    | 129/250 [00:02<00:02, 55.73it/s][A
+[36m(nebius-ddp-training, pid=2459)[0m [36m(nebius-ddp-training, pid=2459)[0m  54%|█████▍    | 135/250 [00:02<00:02, 55.94it/s][A
+[36m(nebius-ddp-training, pid=2459)[0m [36m(nebius-ddp-training, pid=2459)[0m  56%|█████▋    | 141/250 [00:02<00:01, 55.63it/s][A
+[36m(nebius-ddp-training, pid=2459)[0m [36m(nebius-ddp-training, pid=2459)[0m  59%|█████▉    | 147/250 [00:02<00:01, 55.45it/s][A
+[36m(nebius-ddp-training, pid=2459)[0m [36m(nebius-ddp-training, pid=2459)[0m  61%|██████    | 153/250 [00:02<00:01, 55.45it/s][A
+[36m(nebius-ddp-training, pid=2459)[0m [36m(nebius-ddp-training, pid=2459)[0m  64%|██████▎   | 159/250 [00:02<00:01, 55.51it/s][A
+[36m(nebius-ddp-training, pid=2459)[0m [36m(nebius-ddp-training, pid=2459)[0m  66%|██████▌   | 165/250 [00:02<00:01, 55.66it/s][A
+[36m(nebius-ddp-training, pid=2459)[0m [36m(nebius-ddp-training, pid=2459)[0m  68%|██████▊   | 171/250 [00:03<00:01, 55.56it/s][A
+[36m(nebius-ddp-training, pid=2459)[0m [36m(nebius-ddp-training, pid=2459)[0m  71%|███████   | 177/250 [00:03<00:01, 55.44it/s][A
+[36m(nebius-ddp-training, pid=2459)[0m [36m(nebius-ddp-training, pid=2459)[0m  73%|███████▎  | 183/250 [00:03<00:01, 55.75it/s][A
+[36m(nebius-ddp-training, pid=2459)[0m [36m(nebius-ddp-training, pid=2459)[0m  76%|███████▌  | 189/250 [00:03<00:01, 55.54it/s][A
+[36m(nebius-ddp-training, pid=2459)[0m [36m(nebius-ddp-training, pid=2459)[0m  78%|███████▊  | 195/250 [00:03<00:00, 55.44it/s][A
+[36m(nebius-ddp-training, pid=2459)[0m [36m(nebius-ddp-training, pid=2459)[0m  80%|████████  | 201/250 [00:03<00:00, 55.76it/s][A
+[36m(nebius-ddp-training, pid=2459)[0m [36m(nebius-ddp-training, pid=2459)[0m  83%|████████▎ | 207/250 [00:03<00:00, 55.09it/s][A
+[36m(nebius-ddp-training, pid=2459)[0m [36m(nebius-ddp-training, pid=2459)[0m  85%|████████▌ | 213/250 [00:03<00:00, 54.32it/s][A
+[36m(nebius-ddp-training, pid=2459)[0m [36m(nebius-ddp-training, pid=2459)[0m  88%|████████▊ | 219/250 [00:03<00:00, 53.12it/s][A
+[36m(nebius-ddp-training, pid=2459)[0m [36m(nebius-ddp-training, pid=2459)[0m  90%|█████████ | 225/250 [00:04<00:00, 52.07it/s][A
+[36m(nebius-ddp-training, pid=2459)[0m [36m(nebius-ddp-training, pid=2459)[0m  92%|█████████▏| 231/250 [00:04<00:00, 51.84it/s][A
+[36m(nebius-ddp-training, pid=2459)[0m [36m(nebius-ddp-training, pid=2459)[0m  95%|█████████▍| 237/250 [00:04<00:00, 51.69it/s][A
+[36m(nebius-ddp-training, pid=2459)[0m [36m(nebius-ddp-training, pid=2459)[0m  97%|█████████▋| 243/250 [00:04<00:00, 52.11it/s][A
+[36m(nebius-ddp-training, pid=2459)[0m 100%|█████████▉| 249/250 [00:04<00:00, 53.70it/s][A                                               
+[36m(nebius-ddp-training, pid=2459)[0m                                                  [A{'eval_loss': '10.3', 'eval_runtime': '4.73', 'eval_samples_per_second': '105.5', 'eval_steps_per_second': '52.85', 'epoch': '0.005085'}
+[36m(nebius-ddp-training, pid=2459)[0m 100%|██████████| 12/12 [00:06<00:00,  7.06it/s]
+[36m(nebius-ddp-training, pid=2459)[0m 100%|██████████| 250/250 [00:04<00:00, 53.70it/s][A
+[36m(nebius-ddp-training, pid=2459)[0m [36m(nebius-ddp-training, pid=2459)[0m                                                  [A
+[36m(nebius-ddp-training, pid=2459)[0m [36m(nebius-ddp-training, pid=2459)[0m Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s][A
+[36m(nebius-ddp-training, pid=2459)[0m Writing model shards: 100%|██████████| 1/1 [00:25<00:00, 25.18s/it][AWriting model shards: 100%|██████████| 1/1 [00:25<00:00, 25.18s/it]
+[36m(nebius-ddp-training, pid=2459)[0m                                                {'train_runtime': '80.72', 'train_samples_per_second': '0.297', 'train_steps_per_second': '0.149', 'train_loss': '10.69', 'epoch': '0.005085'}
+[36m(nebius-ddp-training, pid=2459)[0m 100%|██████████| 12/12 [01:20<00:00,  7.06it/s]======================================================================
+[36m(nebius-ddp-training, pid=2459)[0m [Comm] Communication summary
+[36m(nebius-ddp-training, pid=2459)[0m [Comm]   world_size:                              1
+[36m(nebius-ddp-training, pid=2459)[0m [Comm]   trainable parameters:                    774,030,080
+[36m(nebius-ddp-training, pid=2459)[0m [Comm]   theoretical grad payload / step (fp32):   3,096,120,320 bytes
+[36m(nebius-ddp-training, pid=2459)[0m [Comm]   theoretical ring all-reduce bytes/GPU/step:0 bytes
+[36m(nebius-ddp-training, pid=2459)[0m [Comm]   measured total comm time (whole run):     0.0000 s
+[36m(nebius-ddp-training, pid=2459)[0m [Comm]   measured total bytes communicated:        0 bytes
+[36m(nebius-ddp-training, pid=2459)[0m [Comm]   measured avg comm time / all-reduce call: 0.000000 s
+[36m(nebius-ddp-training, pid=2459)[0m [Comm]   measured avg comm time / optimizer step:  0.000000 s
+[36m(nebius-ddp-training, pid=2459)[0m ======================================================================
+[36m(nebius-ddp-training, pid=2459)[0m 100%|██████████| 12/12 [01:20<00:00,  6.73s/it]
+[36m(nebius-ddp-training, pid=2459)[0m [Done] Training complete — 12 steps finished.
+[36m(nebius-ddp-training, pid=2459)[0m [36m(nebius-ddp-training, pid=2459)[0m   0%|          | 0/250 [00:00<?, ?it/s][36m(nebius-ddp-training, pid=2459)[0m   3%|▎         | 7/250 [00:00<00:03, 64.86it/s][36m(nebius-ddp-training, pid=2459)[0m   6%|▌         | 14/250 [00:00<00:04, 58.82it/s][36m(nebius-ddp-training, pid=2459)[0m   8%|▊         | 20/250 [00:00<00:04, 54.08it/s][36m(nebius-ddp-training, pid=2459)[0m  10%|█         | 26/250 [00:00<00:04, 53.00it/s][36m(nebius-ddp-training, pid=2459)[0m  13%|█▎        | 32/250 [00:00<00:04, 53.26it/s][36m(nebius-ddp-training, pid=2459)[0m  15%|█▌        | 38/250 [00:00<00:03, 53.85it/s][36m(nebius-ddp-training, pid=2459)[0m  18%|█▊        | 44/250 [00:00<00:03, 54.62it/s][36m(nebius-ddp-training, pid=2459)[0m  20%|██        | 50/250 [00:00<00:03, 55.22it/s][36m(nebius-ddp-training, pid=2459)[0m  22%|██▏       | 56/250 [00:01<00:03, 55.58it/s][36m(nebius-ddp-training, pid=2459)[0m  25%|██▍       | 62/250 [00:01<00:03, 55.79it/s][36m(nebius-ddp-training, pid=2459)[0m  27%|██▋       | 68/250 [00:01<00:03, 56.19it/s][36m(nebius-ddp-training, pid=2459)[0m  30%|██▉       | 74/250 [00:01<00:03, 56.40it/s][36m(nebius-ddp-training, pid=2459)[0m  32%|███▏      | 80/250 [00:01<00:03, 56.58it/s][36m(nebius-ddp-training, pid=2459)[0m  34%|███▍      | 86/250 [00:01<00:02, 56.59it/s][36m(nebius-ddp-training, pid=2459)[0m  37%|███▋      | 92/250 [00:01<00:02, 56.58it/s][36m(nebius-ddp-training, pid=2459)[0m  39%|███▉      | 98/250 [00:01<00:02, 56.65it/s][36m(nebius-ddp-training, pid=2459)[0m  42%|████▏     | 104/250 [00:01<00:02, 56.60it/s][36m(nebius-ddp-training, pid=2459)[0m  44%|████▍     | 110/250 [00:01<00:02, 56.56it/s][36m(nebius-ddp-training, pid=2459)[0m  46%|████▋     | 116/250 [00:02<00:02, 56.56it/s][36m(nebius-ddp-training, pid=2459)[0m  49%|████▉     | 122/250 [00:02<00:02, 56.49it/s][36m(nebius-ddp-training, pid=2459)[0m  51%|█████     | 128/250 [00:02<00:02, 56.59it/s][36m(nebius-ddp-training, pid=2459)[0m  54%|█████▎    | 134/250 [00:02<00:02, 56.49it/s][36m(nebius-ddp-training, pid=2459)[0m  56%|█████▌    | 140/250 [00:02<00:01, 56.53it/s][36m(nebius-ddp-training, pid=2459)[0m  58%|█████▊    | 146/250 [00:02<00:01, 56.48it/s][36m(nebius-ddp-training, pid=2459)[0m  61%|██████    | 152/250 [00:02<00:01, 56.63it/s][36m(nebius-ddp-training, pid=2459)[0m  63%|██████▎   | 158/250 [00:02<00:01, 56.65it/s][36m(nebius-ddp-training, pid=2459)[0m  66%|██████▌   | 164/250 [00:02<00:01, 56.73it/s][36m(nebius-ddp-training, pid=2459)[0m  68%|██████▊   | 170/250 [00:03<00:01, 56.63it/s][36m(nebius-ddp-training, pid=2459)[0m  70%|███████   | 176/250 [00:03<00:01, 56.62it/s][36m(nebius-ddp-training, pid=2459)[0m  73%|███████▎  | 182/250 [00:03<00:01, 56.81it/s][36m(nebius-ddp-training, pid=2459)[0m  75%|███████▌  | 188/250 [00:03<00:01, 56.73it/s][36m(nebius-ddp-training, pid=2459)[0m  78%|███████▊  | 194/250 [00:03<00:00, 56.77it/s][36m(nebius-ddp-training, pid=2459)[0m  80%|████████  | 200/250 [00:03<00:00, 56.68it/s][36m(nebius-ddp-training, pid=2459)[0m  82%|████████▏ | 206/250 [00:03<00:00, 56.64it/s][36m(nebius-ddp-training, pid=2459)[0m  85%|████████▍ | 212/250 [00:03<00:00, 56.37it/s][36m(nebius-ddp-training, pid=2459)[0m  87%|████████▋ | 218/250 [00:03<00:00, 56.57it/s][36m(nebius-ddp-training, pid=2459)[0m  90%|████████▉ | 224/250 [00:03<00:00, 56.53it/s][36m(nebius-ddp-training, pid=2459)[0m  92%|█████████▏| 230/250 [00:04<00:00, 56.57it/s][36m(nebius-ddp-training, pid=2459)[0m  94%|█████████▍| 236/250 [00:04<00:00, 56.79it/s][36m(nebius-ddp-training, pid=2459)[0m  97%|█████████▋| 242/250 [00:04<00:00, 57.38it/s] 99%|█████████▉| 248/250 [00:04<00:00, 57.80it/s]100%|██████████| 250/250 [00:04<00:00, 56.43it/s]
+[36m(nebius-ddp-training, pid=2459)[0m ======================================================================
+[36m(nebius-ddp-training, pid=2459)[0m [Inference] Final evaluation (inference) performance
+[36m(nebius-ddp-training, pid=2459)[0m [Inference]   eval_loss: 10.29850959777832
+[36m(nebius-ddp-training, pid=2459)[0m [Inference]   eval_runtime: 4.4694
+[36m(nebius-ddp-training, pid=2459)[0m [Inference]   eval_samples_per_second: 111.648
+[36m(nebius-ddp-training, pid=2459)[0m [Inference]   eval_steps_per_second: 55.936
+[36m(nebius-ddp-training, pid=2459)[0m [Inference]   epoch: 0.005084745762711864
+[36m(nebius-ddp-training, pid=2459)[0m ======================================================================
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:84155 [0] NCCL INFO comm 0x3ec4b750 rank 0 nranks 1 cudaDev 0 busId 8d000 - Abort COMPLETE
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:84155 [0] NCCL INFO NET/Plugin: Closing net plugin 'IBext_v8'
+[36m(nebius-ddp-training, pid=2459)[0m ddp-probe-7e2406be-head:49469:84155 [0] NCCL INFO NET/Plugin: Closing collnet plugin 'SHARP'
+[36m(nebius-ddp-training, pid=2459)[0m + __skypilot_user_exit_code=0
+[36m(nebius-ddp-training, pid=2459)[0m ++ findmnt -t fuse.rclone --noheading
+[36m(nebius-ddp-training, pid=2459)[0m ++ wc -l
+[36m(nebius-ddp-training, pid=2459)[0m + '[' 0 -gt 0 ']'
+[36m(nebius-ddp-training, pid=2459)[0m + exit 0
+[0m[32m✓ Job finished (status: SUCCEEDED).[0m[0m

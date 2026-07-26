@@ -1,0 +1,50 @@
+name: nebius-ddp-training
+
+workdir: .
+
+resources:
+  infra: k8s/koral-ddp
+  accelerators: "H100:1"
+  memory: "60+"
+  image_id: docker:maorb23/nebius-trainer:qwen36-qlora-cu126-sky-v2
+
+num_nodes: 1
+
+envs:
+  TRAIN_SCRIPT: "train.py"
+  BLOCK_SIZE: "512"
+  PER_DEVICE_TRAIN_BATCH_SIZE: "16"
+  PER_DEVICE_EVAL_BATCH_SIZE: "16"
+  GRADIENT_ACCUMULATION_STEPS: "1"
+  DATALOADER_NUM_WORKERS: "8"
+  TOKENIZERS_PARALLELISM: "false"
+  NCCL_DEBUG: INFO
+  NCCL_DEBUG_SUBSYS: INIT,NET
+
+setup: |
+  echo "Setup complete"
+  nvidia-smi || true
+
+run: |
+  set -euxo pipefail
+
+  MASTER_ADDR=$(echo "$SKYPILOT_NODE_IPS" | head -n 1)
+  MASTER_PORT=29500
+
+  echo "SKYPILOT_NODE_RANK=${SKYPILOT_NODE_RANK}"
+  echo "SKYPILOT_NUM_NODES=${SKYPILOT_NUM_NODES}"
+  echo "SKYPILOT_NUM_GPUS_PER_NODE=${SKYPILOT_NUM_GPUS_PER_NODE}"
+  echo "SKYPILOT_NODE_IPS:"
+  echo "$SKYPILOT_NODE_IPS"
+  echo "MASTER_ADDR=${MASTER_ADDR}"
+  echo "PWD=$(pwd)"
+  test -f "${TRAIN_SCRIPT}"
+
+  torchrun \
+    --nproc_per_node=${SKYPILOT_NUM_GPUS_PER_NODE} \
+    --nnodes=${SKYPILOT_NUM_NODES} \
+    --node_rank=${SKYPILOT_NODE_RANK} \
+    --master_addr=${MASTER_ADDR} \
+    --master_port=${MASTER_PORT} \
+    "${TRAIN_SCRIPT}"
+

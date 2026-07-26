@@ -1,0 +1,11 @@
+# large vendored binary (59 MB) — not a deliverable
+kubectl
+
+# intermediate render artifact (PDF is the deliverable)
+report.html
+
+# python / os cruft
+__pycache__/
+*.pyc
+.DS_Store
+mk8s-ng1-config.json (leftover)
